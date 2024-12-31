@@ -17,11 +17,11 @@ The data contains highway, waterway, and railway nodes and connections in the co
 
 ### Highway
 
-    Highway nodes are collected from the [Freight Analysis Framework (FAF)](https://www.bts.gov/faf) by the U.S. Department of Transportation. Freight origins and destinations are uniformly converted to a "City ST" (ST abbreviates State names) format. In some cases, FAF only provides state-level data and thus "State ST" is used. In total, 113 locations are extracted. Each location is identified using the GIS coordinates of a FedEx facility. The data is at `intermodal-217.csv`, with `id` 301-413.
+Highway nodes are collected from the [Freight Analysis Framework (FAF)](https://www.bts.gov/faf) by the U.S. Department of Transportation. Freight origins and destinations are uniformly converted to a "City ST" (ST abbreviates State names) format. In some cases, FAF only provides state-level data and thus "State ST" is used. In total, 113 locations are extracted. Each location is identified using the GIS coordinates of a FedEx facility. The data is at `intermodal-217.csv`, with `id` 301-413.
 
 ### Railway
 
-    Railway nodes are collected as [Norfolk Southern](https://www.norfolksouthern.com/en/ship-by-rail/our-rail-network/intermodal-terminals-schedules) and [Union Pacific](https://www.up.com/customers/premium/intmap/) intermodal terminals. In total, 56 locations are extracted. Each location is identified using the GIS coordinates of the intermodal facility. The data is at `intermodal-217.csv`, with `id` 101-156.
+Railway nodes are collected as [Norfolk Southern](https://www.norfolksouthern.com/en/ship-by-rail/our-rail-network/intermodal-terminals-schedules) and [Union Pacific](https://www.up.com/customers/premium/intmap/) intermodal terminals. In total, 56 locations are extracted. Each location is identified using the GIS coordinates of the intermodal facility. The data is at `intermodal-217.csv`, with `id` 101-156.
 
 #### Railway nodes
 
@@ -29,7 +29,7 @@ The data contains highway, waterway, and railway nodes and connections in the co
 
 ### Waterway
 
-    Waterway nodes are collected as the major U.S. inland and coastal ports. Waterborn tonnage from the [U.S. Army Corps of Engineers](https://usace.contentdm.oclc.org/digital/collection/p16021coll2/id/6753/) and FAF are used to select the locations. In total, 48 locations are extracted. Each location is identified using the GIS coordinates of the inland/coastal port. The data is at `intermodal-218.csv`, with `id` 201-248.
+Waterway nodes are collected as the major U.S. inland and coastal ports. Waterborn tonnage from the [U.S. Army Corps of Engineers](https://usace.contentdm.oclc.org/digital/collection/p16021coll2/id/6753/) and FAF are used to select the locations. In total, 48 locations are extracted. Each location is identified using the GIS coordinates of the inland/coastal port. The data is at `intermodal-218.csv`, with `id` 201-248.
 
 #### Waterway nodes
 
