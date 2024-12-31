@@ -37,18 +37,18 @@ Waterway nodes are collected as the major U.S. inland and coastal ports. Waterbo
 
 ## Edges
 
-    Data for all edges are extracted from the [Freight and Fuel Transportation Optimization Tool (FTOT)](https://volpeusdot.github.io/FTOT-Public/). Highway edges are assumed to connect all highway, railway, and waterway nodes. The U.S. highway network is used to calculate the distances and to construct the paths from one node to another. Railway connections are identified using information from [Norfolk Southern](https://www.norfolksouthern.com/en/ship-by-rail/our-rail-network/intermodal-terminals-schedules) and [Union Pacific](https://www.up.com/customers/premium/intmap/). Railway edges are then constructed using FTOT. Waterway edges are constructed according to the U.S. inland river systems and the east and west coast geographical features.
+Data for all edges are extracted from the [Freight and Fuel Transportation Optimization Tool (FTOT)](https://volpeusdot.github.io/FTOT-Public/). Highway edges are assumed to connect all highway, railway, and waterway nodes. The U.S. highway network is used to calculate the distances and to construct the paths from one node to another. Railway connections are identified using information from [Norfolk Southern](https://www.norfolksouthern.com/en/ship-by-rail/our-rail-network/intermodal-terminals-schedules) and [Union Pacific](https://www.up.com/customers/premium/intmap/). Railway edges are then constructed using FTOT. Waterway edges are constructed according to the U.S. inland river systems and the east and west coast geographical features.
 
-    The highway, railway, and watereay edge data are stored in `H-adj.pickle`, `R-adj.pickle`, and `W-adj.pickle`, respectively, accessible by Python. Each data is formated as a dictionary, where keys are the `id` of origin and destination nodes, e.g., `(1, 2)`. Two way connections are always assumed and smaller index is always the first element in the key. Values contain 7 fields: `i_lat` is the latitude of the origin, `i_lon` is the longitude of the origin, `j_lat` is the latitude of the destination, `j_lon` is the longitude of the destination, `mode` is the mode of transportation, `distance` is the total travel distance from the origin to the destination as miles, `path` is a tuple of all intermediate way points for the path between the origin and the destination.
+The highway, railway, and watereay edge data are stored in `H-adj.pickle`, `R-adj.pickle`, and `W-adj.pickle`, respectively, accessible by Python. Each data is formated as a dictionary, where keys are the `id` of origin and destination nodes, e.g., `(1, 2)`. Two way connections are always assumed and smaller index is always the first element in the key. Values contain 7 fields: `i_lat` is the latitude of the origin, `i_lon` is the longitude of the origin, `j_lat` is the latitude of the destination, `j_lon` is the longitude of the destination, `mode` is the mode of transportation, `distance` is the total travel distance from the origin to the destination as miles, `path` is a tuple of all intermediate way points for the path between the origin and the destination.
     
 
 ## Demand
 
-    The demand data is ectracted from the FAF data using the 113 cities/states as origins and destinations. The data contains projected tonnages in years 2025, 2030, 2035, 2040, 2045, and 2050. Mode-specific tonnages are summed up as the total demand for future research to identify optimal transportation plans, which may deviates from the original projection. The data is stored in `demand.pickle`. The keys are the `id` of origin and destination nodes. Note that keys `(1, 2)` and `(2, 1)` represents two entrires. Values contain 6 fields, including `tons_2025`, `tons_2030`, `tons_2035`, `tons_2040`, `tons_2045`, and `tons_2050`.
+The demand data is ectracted from the FAF data using the 113 cities/states as origins and destinations. The data contains projected tonnages in years 2025, 2030, 2035, 2040, 2045, and 2050. Mode-specific tonnages are summed up as the total demand for future research to identify optimal transportation plans, which may deviates from the original projection. The data is stored in `demand.pickle`. The keys are the `id` of origin and destination nodes. Note that keys `(1, 2)` and `(2, 1)` represents two entrires. Values contain 6 fields, including `tons_2025`, `tons_2030`, `tons_2035`, `tons_2040`, `tons_2045`, and `tons_2050`.
 
 ### Demand nodes
 
-    ![Highway nodes](images/H.png)
+![Highway nodes](images/H.png)
 
 ## Sample Usage 
 
