@@ -25,7 +25,7 @@ Railway nodes are collected as [Norfolk Southern](https://www.norfolksouthern.co
 
 #### Railway nodes
 
-    ![Railway nodes and edges](images/R.png)
+![Railway nodes and edges](images/R.png)
 
 ### Waterway
 
