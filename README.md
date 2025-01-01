@@ -23,7 +23,7 @@ Highway nodes are collected from the [Freight Analysis Framework (FAF)](https://
 
 Railway nodes are collected as [Norfolk Southern](https://www.norfolksouthern.com/en/ship-by-rail/our-rail-network/intermodal-terminals-schedules) and [Union Pacific](https://www.up.com/customers/premium/intmap/) intermodal terminals. In total, 56 locations are extracted. Each location is identified using the GIS coordinates of the intermodal facility. The data is at `intermodal-217.csv`, with `id` 101-156.
 
-#### Railway nodes
+#### Railway nodes & connections
 
 ![Railway nodes and edges](images/R.png)
 
@@ -31,7 +31,7 @@ Railway nodes are collected as [Norfolk Southern](https://www.norfolksouthern.co
 
 Waterway nodes are collected as the major U.S. inland and coastal ports. Waterborn tonnage from the [U.S. Army Corps of Engineers](https://usace.contentdm.oclc.org/digital/collection/p16021coll2/id/6753/) and FAF are used to select the locations. In total, 48 locations are extracted. Each location is identified using the GIS coordinates of the inland/coastal port. The data is at `intermodal-218.csv`, with `id` 201-248.
 
-#### Waterway nodes
+#### Waterway nodes & connections
 
 ![Waterway nodes and edges](images/W.png)
 
@@ -46,7 +46,7 @@ The highway, railway, and watereay edge data are stored in `H-adj.pickle`, `R-ad
 
 The demand data is ectracted from the FAF data using the 113 cities/states as origins and destinations. The data contains projected tonnages in years 2025, 2030, 2035, 2040, 2045, and 2050. Mode-specific tonnages are summed up as the total demand for future research to identify optimal transportation plans, which may deviates from the original projection. The data is stored in `demand.pickle`. The keys are the `id` of origin and destination nodes. Note that keys `(1, 2)` and `(2, 1)` represents two entrires. Values contain 6 fields, including `tons_2025`, `tons_2030`, `tons_2035`, `tons_2040`, `tons_2045`, and `tons_2050`.
 
-### Demand nodes
+### Demand nodes & connections
 
 ![Highway nodes](images/H.png)
 
