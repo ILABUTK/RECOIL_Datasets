@@ -6,6 +6,13 @@
 The data contains highway, waterway, and railway nodes and connections in the continental U.S.
 <!-- This initiative aims to transform the U.S. transportation sector, a major contributor to greenhouse gas emissions, by developing a low-carbon intermodal freight system to significantly reduce emissions by 2050. This project focuses on innovative models and logistics to enhance energy efficiency and freight resiliency across waterways, rail, and road networks. To perform the mentioned tasks, the following data sources are required: -->
 
+
+## Updates
+
+	-2025/01/03: `W-adj.pickle` mode changed to 'W'.
+    -2024/11/19: edited Seattle port location to be different from the warehouse.
+	-2024/11/17: initial publication.
+
     
 ## Data files
 
