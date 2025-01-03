@@ -9,9 +9,9 @@ The data contains highway, waterway, and railway nodes and connections in the co
 
 ## Updates
 
-	-2025/01/03: `W-adj.pickle` mode changed to 'W'.
-    -2024/11/19: edited Seattle port location to be different from the warehouse.
-	-2024/11/17: initial publication.
+- 2025/01/03: `W-adj.pickle` mode changed to 'W'.
+- 2024/11/19: edited Seattle port location to be different from the warehouse.
+- 2024/11/17: initial publication.
 
     
 ## Data files
