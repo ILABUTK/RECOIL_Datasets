@@ -6,6 +6,19 @@
 The data contains highway, waterway, and railway nodes and connections in the continental U.S.
 <!-- This initiative aims to transform the U.S. transportation sector, a major contributor to greenhouse gas emissions, by developing a low-carbon intermodal freight system to significantly reduce emissions by 2050. This project focuses on innovative models and logistics to enhance energy efficiency and freight resiliency across waterways, rail, and road networks. To perform the mentioned tasks, the following data sources are required: -->
 
+## How to cite
+
+```
+@misc{RECOIL_Datasets,
+  author       = {Xueping Li and Zeyu Liu},
+  title        = {RECOIL Datasets},
+  year         = 2025,
+  publisher    = {GitHub},
+  journal      = {GitHub repository},
+  howpublished = {\url{https://github.com/ILABUTK/RECOIL_Datasets}},
+  note         = {This work was funded by the Advanced Research Projects Agency-Energy (ARPA-E), U.S. Department of Energy (#DE-AR0001780).}
+}
+```
 
 ## Updates
 
