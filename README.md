@@ -22,6 +22,7 @@ The data contains highway, waterway, and railway nodes and connections in the co
 
 ## Updates
 
+- 2025/01/26: Added Voilà web app (`voila.ipynb`) with Docker support for interactive data exploration.
 - 2025/01/03: `W-adj.pickle` mode changed to 'W'.
 - 2024/11/19: edited Seattle port location to be different from the warehouse.
 - 2024/11/17: initial publication.
@@ -70,35 +71,71 @@ The demand data is ectracted from the FAF data using the 113 cities/states as or
 
 ![Highway nodes](images/H.png)
 
-## Sample Usage 
+## Usage Options
 
-- See [`usage.ipynb`](usage.ipynb)
+### 1. Interactive Web App (Voilà)
 
-# Run as a web app (Voilà + Docker)
+The easiest way to explore the datasets is through our interactive web application powered by Voilà. The app provides five on-demand examples with a professional, polished UI:
 
-You can run the notebook as a polished web app using Voilà in Docker.
+1. **Basic Exploration**: Load and filter nodes/edges by city and mode (with loading indicators)
+2. **Find Neighbors**: Discover which intermodal nodes connect to a given city (dropdown selection)
+   - ⚠️ **Performance Note**: Waterway loads in <1s, Railway ~11s, Highway may take 15+ seconds or timeout
+3. **Demand Lookup**: Query freight tonnage projections between origin-destination pairs (~2 seconds)
+4. **Dataset Statistics (Partial)**: View Railway and Waterway statistics (~12 seconds)
+   - ⚠️ Highway edges excluded due to large dataset size (15+ second load times)
+5. **Mode Comparison**: Compare Railway vs Waterway network distances and statistics (~12 seconds)
+   - ⚠️ Highway excluded due to performance constraints
 
-Build the image (first time only):
+Features:
+- **Performance-aware design**: Operations optimized based on real load time measurements
+- **Smart loading indicators**: Visual feedback with accurate time estimates (tested in-container)
+- **Professional styling**: Clean, modern UI with consistent colors and typography
+- **User-friendly controls**: Dropdowns pre-populated with valid cities, preventing invalid inputs
+- **Real-time feedback**: Progress indicators and status messages throughout
+- **Transparent warnings**: Users informed when Highway data is excluded or slow to load
 
-```bash
-docker build -t recoil-voila:dev .
-```
+See [`voila.ipynb`](voila.ipynb) for the lightweight notebook that powers the web app.
 
-Run the container and open the app:
+### 2. Jupyter Notebook (Full Examples)
 
-```bash
-docker run --rm -p 8866:8866 recoil-voila:dev
-# then visit http://localhost:8866
-```
+For detailed exploration and programmatic usage, see [`usage.ipynb`](usage.ipynb), which includes:
+- Helper functions for loading remote pickles and building GeoDataFrames
+- Comprehensive examples of data filtering, visualization, and analysis
+- Full demonstrations of nodes, edges, and demand workflows
 
-Or use Docker Compose (auto-builds and mounts the repo for live edits):
+---
+
+## Run as a Web App (Voilà + Docker)
+
+The web app serves `voila.ipynb` by default, which provides interactive on-demand data exploration without long loading times.
+
+### Quick Start
+
+**Using Docker Compose (recommended):**
 
 ```bash
 docker compose up --build
 # then visit http://localhost:8866
 ```
 
-Check logs (optional):
+**Using Docker directly:**
+
+Build the image:
+
+```bash
+docker build -t recoil-voila:dev .
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 8866:8866 recoil-voila:dev
+# then visit http://localhost:8866
+```
+
+### Customization
+
+Check logs:
 
 ```bash
 docker logs -n 50 recoil-data-voila
@@ -106,9 +143,52 @@ docker logs -n 50 recoil-data-voila
 
 Environment variables (optional):
 
-- `VOILA_PORT` (default 8866)
-- `VOILA_IP` (default 0.0.0.0)
-- `VOILA_NOTEBOOK` (default `voila.ipynb` — a lightweight notebook for the web app; use `usage.ipynb` for full examples)
+- `VOILA_PORT` (default: 8866)
+- `VOILA_IP` (default: 0.0.0.0)
+- `VOILA_NOTEBOOK` (default: `voila.ipynb` — use `usage.ipynb` for full examples)
+- `BASE_URL` (default: https://recoil.ise.utk.edu/data/Parsed_Data/)
+
+### Repository Structure
+
+```
+.
+├── README.md                      # This file
+├── voila.ipynb                    # Lightweight interactive web app (professional UI)
+├── usage.ipynb                    # Full Jupyter notebook with detailed examples
+├── test_performance.py            # Performance testing script
+├── requirements.txt               # Python dependencies
+├── Dockerfile                     # Container definition
+├── docker-compose.yml             # Compose configuration
+├── start.sh                       # Container entrypoint
+├── .github/
+│   └── copilot-instructions.md    # AI agent guidance
+└── images/                        # Dataset visualizations
+```
+
+### Performance Testing
+
+To test data loading times and identify slow operations:
+
+```bash
+# Run inside the Docker container
+docker exec -it recoil-data-voila python /app/test_performance.py
+```
+
+This helps identify which examples may need loading indicators or warnings for users.
+
+**Current Performance Metrics (tested in Docker):**
+- Nodes CSV: ~0.1 seconds ✓
+- Waterway edges: ~0.3 seconds ✓
+- Demand data: ~1.7 seconds ✓
+- Railway edges: ~11 seconds ⚠️ (slow)
+- Highway edges: 15+ seconds ⏱️ (timeout)
+
+Based on these results, the web app:
+- Excludes Highway edges from Examples 4 & 5 to prevent timeouts
+- Warns users when selecting Highway mode in Example 2
+- Shows accurate loading time estimates for each operation
+
+---
 
 # Contact Us
 
