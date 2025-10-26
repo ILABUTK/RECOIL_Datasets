@@ -1,0 +1,16 @@
+services:
+  recoil-voila:
+    container_name: recoil-data-voila
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: recoil-voila:dev
+    ports:
+      - "${VOILA_PORT:-8866}:8866"
+    environment:
+      - VOILA_PORT=8866
+      - VOILA_IP=0.0.0.0
+      - VOILA_NOTEBOOK=voila.ipynb
+    volumes:
+      - ./:/app
+    restart: unless-stopped

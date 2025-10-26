@@ -1,0 +1,17 @@
+# Docker build context exclusions
+.git
+.gitignore
+.vscode
+.DS_Store
+__pycache__
+*.pyc
+*.pyo
+.ipynb_checkpoints
+.venv
+venv
+node_modules
+# Images not needed at runtime for Voilà
+images/
+# Large local caches
+.mypy_cache
+.pytest_cache

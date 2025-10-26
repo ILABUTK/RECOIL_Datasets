@@ -74,6 +74,42 @@ The demand data is ectracted from the FAF data using the 113 cities/states as or
 
 - See [`usage.ipynb`](usage.ipynb)
 
+# Run as a web app (Voilà + Docker)
+
+You can run the notebook as a polished web app using Voilà in Docker.
+
+Build the image (first time only):
+
+```bash
+docker build -t recoil-voila:dev .
+```
+
+Run the container and open the app:
+
+```bash
+docker run --rm -p 8866:8866 recoil-voila:dev
+# then visit http://localhost:8866
+```
+
+Or use Docker Compose (auto-builds and mounts the repo for live edits):
+
+```bash
+docker compose up --build
+# then visit http://localhost:8866
+```
+
+Check logs (optional):
+
+```bash
+docker logs -n 50 recoil-data-voila
+```
+
+Environment variables (optional):
+
+- `VOILA_PORT` (default 8866)
+- `VOILA_IP` (default 0.0.0.0)
+- `VOILA_NOTEBOOK` (default `voila.ipynb` — a lightweight notebook for the web app; use `usage.ipynb` for full examples)
+
 # Contact Us
 
 Project Link: <a href="https://recoil.utk.edu/">https://recoil.utk.edu/</a>
